@@ -1,0 +1,29 @@
+---
+title: "My R Markdown Report"
+author: "John Fay"
+date: "Fall 2026"
+---
+
+# Access Box Data 
+This Rmd demonstrates how to use large datasets stored on a box drive in your versioned workspace. For this to work, you'll need the BoxDrive software installed on your machine, and you will need to be logged in to your Box account via the BoxDrive app. 
+
+The path to the box folder on your machine depends on the operating system used (Windows or MacOS). Here, we use the `platform` package to determine what os is used and then creates a Path object pointing to the appropriate path. From there, we can add folders and files to the path object to access specific files that exist in the Box drive. 
+
+In this example, we'll read the `CTD_chem_gene_ixns.csv` file that lives in the class Box drive (`ENVIRON 712L-Students`), within the `Data`/`CTD-Jalal` folder, loading its contents into a dataframe. 
+
+```{r load packages}
+library(tidyverse) 
+library(here)
+
+current_os <- Sys.info()[["sysname"]]
+
+if (current_os == "Darwin") {
+  print("Running on a Mac")
+} else if (current_os == "Windows") {
+  print("Running on a PC (Windows)")
+} else if (current_os == "Linux") {
+  print("Running on Linux")
+}
+
+```
+
